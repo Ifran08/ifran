@@ -77,9 +77,9 @@ const ParticleSwarm = ({ scrollRef }) => {
 
       target.set(x, y, z);
 
-      // Indigo → cyan → amber hue range (matches light-theme palette)
-      const hue = 0.62 + Math.sin(f * 20.0 + t) * 0.12; // ~indigo to cyan
-      const light = 0.55 + Math.sin(theta * 2.0 - t * 3.0) * 0.18;
+      // Violet → cyan hue range — luminous on dark bg
+      const hue = 0.68 + Math.sin(f * 20.0 + t) * 0.14; // ~violet to cyan
+      const light = 0.62 + Math.sin(theta * 2.0 - t * 3.0) * 0.2;
 
       color.setHSL(hue, 0.85, light);
 
@@ -126,10 +126,10 @@ export default function LiquidBackground() {
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
       >
-        <fog attach="fog" args={['#F7F8FB', 0.005]} />
+        <fog attach="fog" args={['#080B12', 0.004]} />
         <ParticleSwarm scrollRef={scrollRef} />
         <Effects disableGamma>
-          <unrealBloomPass threshold={0} strength={1.1} radius={0.5} />
+          <unrealBloomPass threshold={0} strength={1.8} radius={0.65} />
         </Effects>
       </Canvas>
     </div>
